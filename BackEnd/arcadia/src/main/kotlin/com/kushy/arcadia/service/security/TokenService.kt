@@ -28,6 +28,11 @@ class TokenService {
                 .withIssuer("arcadia-api")            // quem está emitindo o token ( nome da aplicação )
                 .withSubject(user.email)                    // É a identidade do token, no caso vai ser o Email do usuário
                 .withExpiresAt(generateExpirationDate())    // data de validade do token
+                    // tive que add isso aqui para que o front consiga pegar essas informações do token
+                .withClaim("id", user.id)
+                .withClaim("nickname", user.nickname)
+                .withClaim("email", user.email)
+                .withClaim("role", user.role.name)
                 .sign(algoritmo)                            // Assina o token com o algoritmo
         }catch (exception: JWTCreationException) {          // lança uma exceção caso de algum erro na criação
             throw RuntimeException("Erro ao gerar token JWT", exception)
