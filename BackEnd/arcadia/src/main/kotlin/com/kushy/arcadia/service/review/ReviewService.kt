@@ -132,6 +132,11 @@ class ReviewService(
             .map { it.toDTO() }
     }
 
+    fun getAllReviews(): List<ReviewResponseDTO> {
+        val reviews : List<Review> = reviewRepository.findAll()
+
+        return reviews.map { it.toDTO() }
+    }
 
     fun Review.toDTO() = ReviewResponseDTO(
         id = this.id!!,

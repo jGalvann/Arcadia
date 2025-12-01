@@ -3,9 +3,9 @@ package com.kushy.arcadia.controller
 import com.kushy.arcadia.dto.ReviewCreateDTO
 import com.kushy.arcadia.dto.ReviewResponseDTO
 import com.kushy.arcadia.dto.ReviewUpdateDTO
-import com.kushy.arcadia.entity.User
+import com.kushy.arcadia.entity.Review
+import com.kushy.arcadia.repository.ReviewRepository
 import com.kushy.arcadia.service.review.ReviewService
-import com.kushy.arcadia.service.security.SecurityUtils
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -31,6 +31,11 @@ class ReviewController(
     @GetMapping("/user/{userId}")
     fun getByUser(@PathVariable userId: Long): List<ReviewResponseDTO> {
         return reviewService.getReviewsByUser(userId)
+    }
+
+    @GetMapping
+    fun getAllReviews() : List<ReviewResponseDTO> {
+        return reviewService.getAllReviews()
     }
 
     @GetMapping("/game/{gameId}")
