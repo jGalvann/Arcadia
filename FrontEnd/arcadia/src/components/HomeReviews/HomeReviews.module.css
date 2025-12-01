@@ -1,0 +1,59 @@
+.container {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 88rem;
+  margin-left: auto;     
+  margin-right: auto;    
+}
+
+.titulo {
+  font-size: 1.1rem;
+  font-family: 'Poppins-ExtraLight';
+  color: #fff;
+  margin-left: 2rem;
+  border-left: 4px solid #00aaff;
+  padding-left: 0.5rem;
+}
+
+/* Área do carrossel */
+.reviews {
+  display: flex;
+  gap: 2rem; /* MAIS espaço entre cards */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.reviews::-webkit-scrollbar {
+  display: none; /* remove scroll bar Chrome */
+}
+
+.reviewWrapper {
+  flex: 0 0 20rem; /* largura fixa do card */
+}
+
+/* BOTÕES DE NAVEGAÇÃO */
+.arrow {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.botoesscroll {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.arrow:hover {
+  background: #555;
+  transition: all 0.5s ease;
+}

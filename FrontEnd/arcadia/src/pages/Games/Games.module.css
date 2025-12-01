@@ -1,0 +1,111 @@
+/* Container principal da página */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121212; /* Fundo escuro para combinar com o tema */
+}
+
+/* Cabeçalho que alinha o Título à esquerda e os Controles à direita */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1600px; /* Limite de largura para telas muito grandes */
+  padding: 2rem 5rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.titulo {
+  font-family: 'Poppins-Light', sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+/* Agrupa o Select e a SearchBar */
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Espaço entre o Select e a Barra */
+}
+
+.filtro {
+  /* Tamanho e Espaçamento */
+  height: 40px; /* Altura fixa para alinhar com a barra se precisar */
+  padding: 0 20px;
+  min-width: 220px; /* Largura mínima para o texto não cortar */
+
+  /* Estilo Visual (Copiado do seu Input) */
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 15px;
+  font-size: 15px;
+  
+  /* Comportamento */
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+  
+  /* Fonte */
+  font-family: inherit;
+}
+
+/* Efeito ao passar o mouse ou clicar */
+.filtro:hover, .filtro:focus {
+  border-color: #777;
+  background-color: #252525;
+}
+
+/* Estiliza as opções que abrem (Dropdown) */
+.filtro option {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Grid dos Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 5rem;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Ajuste para telas muito grandes (opcional) */
+@media (min-width: 1800px) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* Botão Carregar Mais */
+.loadMore {
+  font-family: 'Poppins-Bold', sans-serif;
+  margin: 3rem auto;
+  padding: 0.8rem 2.5rem;
+  background: #ffab19;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadMore:hover {
+  background-color: #ffb028;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 171, 25, 0.3);
+}

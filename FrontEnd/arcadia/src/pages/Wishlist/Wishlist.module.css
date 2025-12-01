@@ -1,0 +1,84 @@
+/* Container Padrão */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Título da Página */
+.titulo {
+  font-family: 'Poppins-Light', sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 4.5rem;
+  }
+
+/* Grid Responsivo (Igual ao Games.jsx) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0 5rem 3rem 5rem; /* Padding inferior extra para não cortar */
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Wrapper para o Card + Botão ficarem juntos */
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Botão Remover */
+.removeButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff4d4d; /* Vermelho alerta */
+  margin-top: 8px;
+  padding: 0.6rem 1.5rem;
+  background: #ff4d4d;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Poppins-Regular', sans-serif;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.removeButton:hover {
+  background-color: #ff2b2b;
+  transform: translateY(-2px);
+}
+
+/* Estado Vazio */
+.noFav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5rem;
+  color: #aaa;
+}
+
+.noFav h2 {
+  font-family: 'Poppins-Bold', sans-serif;
+  margin-bottom: 0.5rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-items: center; 
+  text-align: center;
+}

@@ -1,0 +1,211 @@
+/* CARD PRINCIPAL */
+.reviewCard {
+  background-color: #1c1c1c;
+  width: 40rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 14px;
+  border: 1px solid #333;
+  transition: .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewCard:hover {
+  transform: translateY(-3px);
+  border-color: #00aaff;
+}
+
+/* Cabeçalho */
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nome do jogo */
+.gameName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #00aaff;
+  letter-spacing: .5px;
+}
+
+/* Nota */
+.stars {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffcc00;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Texto */
+.reviewText {
+  font-size: 1rem;
+  line-height: 1.45;
+  opacity: .95;
+  word-break: break-word;
+}
+
+/* RODAPÉ DO CARD: ações + likes */
+.footerRow {
+  display: flex;
+  justify-content: space-between; /* esquerda x direita */
+  align-items: center;
+  margin-top: .8rem;
+}
+
+/* Botões de ação */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: .2s;
+}
+
+.editBtn { background-color: #27ae60; }
+.deleteBtn { background-color: #c62828; }
+
+.editBtn:hover,
+.deleteBtn:hover {
+  opacity: .85;
+}
+
+/* Likes */
+.likeContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.likeBtn,
+.dislikeBtn {
+  background: #1e1e1e;
+  border: 1px solid #444;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: .2s;
+}
+
+.likeBtn:hover,
+.dislikeBtn:hover {
+  background: #2d2d2d;
+  border-color: #777;
+}
+
+/* ================= MODAL ================= */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #1c1c1c;
+  padding: 2rem;
+  width: 450px;
+  border-radius: 14px;
+  border: 1px solid #333;
+  box-shadow: 0 0 18px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeIn .25s ease-in-out;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Título */
+.modal h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+
+/* Labels */
+.modal label {
+  font-size: .95rem;
+  opacity: .85;
+}
+
+/* Inputs */
+.modal input,
+.modal textarea,
+.modal select {
+  width: 100%;
+  padding: 8px 10px;
+  background: #252525;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  font-size: .95rem;
+  outline: none;
+  transition: .2s;
+}
+
+.modal textarea {
+  min-height: 90px;
+  resize: none;
+}
+
+.modal input:focus,
+.modal textarea:focus,
+.modal select:focus {
+  border-color: #0090dd;
+  box-shadow: 0 0 4px #0090dd;
+}
+
+/* Botões do modal */
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.saveBtn,
+.cancelBtn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  transition: .2s;
+}
+
+.saveBtn { background-color: #27ae60; }
+.cancelBtn { background-color: #c62828; }
+
+.saveBtn:hover,
+.cancelBtn:hover {
+  opacity: .85;
+}

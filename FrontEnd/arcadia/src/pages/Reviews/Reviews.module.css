@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-family: 'Poppins-ExtraLight';
+  max-width: 20%;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+
+.empty {
+  margin: 10rem;
+  opacity: 0.6;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.gridReviews {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin-left: 1rem;
+}

@@ -1,0 +1,47 @@
+.container {
+  padding: 1rem 2rem;
+  max-height: 50%;
+}
+
+.titulo {
+  font-size: 1.1rem;
+  margin: 0;
+  font-family: 'Poppins-ExtraLight';
+  max-width: 20%;
+  gap: 0.5rem;
+
+  
+}
+
+.jogos {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  text-align: center;
+}
+
+.arrow {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.botoesscroll {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.arrow:hover {
+  background: #555;
+  transition: all 0.5s ease;
+}

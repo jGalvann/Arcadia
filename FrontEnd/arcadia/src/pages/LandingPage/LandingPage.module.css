@@ -1,0 +1,188 @@
+.footerlanding {
+  max-width: 50%;
+}
+
+/* ----- CONTAINER PRINCIPAL ----- */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  padding: 0 2%;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 50%;
+  margin-top: 0.5rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-right: 3rem;
+}
+
+
+/* ----- SEÇÃO PRINCIPAL ----- */
+.secaoprincipal {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* ----- TEXTO PRINCIPAL ----- */
+.txtsecao h1 {
+  font-family: "Poppins-Black";
+  font-size: 8vw;
+  margin: 0;
+  /* REMOVE o espaçamento entre Explore, Avalie, Conquiste */
+  line-height: 0.95;
+  /* Deixa as palavras mais próximas */
+  text-align: left;
+}
+
+.explore {
+  color: #ffffff;
+}
+
+.avalie {
+  color: #f5b402;
+}
+
+.conquiste {
+  color: #00b6e8;
+}
+
+/* ----- SUBTÍTULO ----- */
+.herosubtitle {
+  margin-top: 1.5 rem;
+  color: #d3d3d3;
+  font-size: 1.5vw;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+/* ----- IMAGEM DO MARIO ----- */
+.marioimage {
+  position: relative;
+  width: 30vw;
+  /* aumenta a imagem conforme o Figma */
+  height: auto;
+  max-width: 700px;
+  min-width: 400px;
+  border-radius: 30px;
+  background-color: #00b6e8;
+  box-shadow: 1vw 1vw 0 #f5b402;
+  /* aumenta o efeito dos quadrados atrás */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 40%;
+  height: 100%;
+}
+
+.marioimage img {
+  width: 32vw;
+  border-radius: 30px;
+  position: relative;
+}
+
+/* ----- SEÇÃO DE CADASTRO ----- */
+.Cadastro {
+  margin-top: 1.5rem;
+  max-width: 70%;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.Cadastro p {
+  font-size: 1.5vw;
+  margin-bottom: 0.5rem;
+}
+
+.bntcadastro {
+  background-color: #f5b402;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 2.5vw;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bntcadastro:hover {
+  background-color: #ffca2c;
+}
+
+@media (max-width: 1366px) {
+  .Txt-seccao h1 {
+    font-size: 5vw;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3vw;
+  }
+
+  .mario-image img {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .mario-image img {
+    width: 26vw;
+    max-width: 340px;
+  }
+
+  .bnt-cadastro {
+    font-size: 1.8vw;
+    padding: 0.7rem 1.8rem;
+  }
+}
+
+
+/*para celefone celulares*/
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+
+  .Txt-seccao h1 {
+    font-size: 10vw;
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 4vw;
+    text-align: center;
+  }
+
+
+
+  .mario-image {
+    width: 60vw;
+    max-width: 300px;
+    box-shadow: 4vw 4vw 0 #f5b402;
+  }
+
+  .mario-image img {
+    width: 100%;
+  }
+
+  .Cadastro p {
+    font-size: 4vw;
+  }
+
+  .bnt-cadastro {
+    font-size: 5vw;
+    width: 100%;
+    max-width: 300px;
+  }
+}

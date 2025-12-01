@@ -1,0 +1,86 @@
+.navbar {
+  width: 95%;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: end;
+}
+
+
+.container {
+  display: flex;
+  gap: 5rem;
+  padding: 0.3rem 2rem;
+}
+
+
+.containerdados {
+  background-color: #363636;
+  border-radius: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.containerdados h1 {
+  font-weight: 900;
+  font-size: 5.5rem;
+}
+
+.containerdados p {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.campospreencher {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;  
+  align-items: center;
+  color: white;
+}
+
+.campospreencher input {
+  font-family: 'Poppins-Light';
+  background-color: #3d3d3d;
+  padding: 1.2rem;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.2rem;
+  width: 70%;
+  outline: none;
+  color: white;
+
+}
+
+.campospreencher button {
+  background-color: #f5b402;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 40px;
+  padding: 1rem;
+  cursor: pointer;
+  font-family: 'Poppins-Bold';
+
+}
+
+.containerimg {
+  width: 60vw;
+  height: 40vw;
+  border-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.containerimg img {
+  width: 120%;
+  height: 100%;
+  border-radius: 25px;
+}

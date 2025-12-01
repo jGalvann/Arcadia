@@ -1,0 +1,73 @@
+body{
+background-color: #292929;
+color: white;
+margin: 0;
+padding: 0 0;
+font-family: "Poppins", sans-serif;
+
+  height: 100%;
+  overflow-x: hidden; /* só horizontal */
+  overflow-y: auto;   /* permite scroll */
+
+}
+
+
+
+@font-face {
+    font-family: 'Poppins-Black';
+    src: url(assets/fonts/Poppins-Black.ttf);
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url(assets/fonts/Poppins-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-ExtraBold';
+    src: url(assets/fonts/Poppins-ExtraBold.ttf);
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url(assets/fonts/Poppins-Medium.ttf);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url(assets/fonts/Poppins-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url(assets/fonts/Poppins-SemiBold.ttf);
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url(assets/fonts/Poppins-Light.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-ExtraLight';
+    src: url(assets/fonts/Poppins-ExtraLight.ttf);
+    font-weight: 200;
+    font-style: normal;
+}
+
+
+

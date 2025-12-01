@@ -1,0 +1,68 @@
+.link {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  font-family: 'Poppins-Light';
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #f5b402;
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.loginButton {
+  background-color: #00b6e8; 
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px; 
+  padding: 0.6rem 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color: #0090dd;
+  transform: scale(1.05);
+}
+
+.loginButton:active {
+  transform: scale(0.97);
+}
+
+.profileIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #d9d9d900;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.profileIcon:hover {
+  transform: scale(1.1);
+}
+
+.logo {
+  display: inline-block;
+  
+}
+
+.text {
+  font-family: 'Poppins-Black';
+  font-size: 2rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.text:hover {
+  color: #f5b402;
+  }

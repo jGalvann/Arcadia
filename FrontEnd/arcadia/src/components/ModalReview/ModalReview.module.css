@@ -1,0 +1,79 @@
+.reviewOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.reviewModal {
+  background: #1c1c1c;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviewModal input,
+.reviewModal textarea {
+  background: #262626;
+  color: white;
+  border: 1px solid #444;
+  padding: 8px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.reviewBtn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btnSave {
+  background: #4caf50;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.btnCancel {
+  background: #d9534f;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.statusSelect {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  background-color: #1f1f1f;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.statusSelect:hover,
+.statusSelect:focus {
+  border-color: #0090dd;
+  box-shadow: 0 0 3px #0090dd;
+}
+
+.statusSelect option {
+  background-color: #1f1f1f;
+  color: #fff;  
+}
+

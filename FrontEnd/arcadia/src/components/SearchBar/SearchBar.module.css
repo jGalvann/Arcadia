@@ -1,0 +1,19 @@
+.SearchBar {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end; /* joga para a direita */
+    padding-right: 80px; /* afasta um pouco da borda */
+}
+
+.SearchBar input {
+    width: 300;
+    max-width: 100%;
+    padding: 8px 30px;
+    border-radius: 15px;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
