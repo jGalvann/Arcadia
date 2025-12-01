@@ -6,7 +6,8 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-// O lombok funciona mto bem em java, mas nem tanto assim em kotlin, então nao precisa das anotações @Getter, @Setter @NoArgsConstructor e @AllArgsConstructor. O Kotlin faz isso automaticamente.
+// O lombok funciona mto bem em java, mas nem tanto assim em kotlin,
+// então nao precisa das anotações @Getter, @Setter @NoArgsConstructor e @AllArgsConstructor. O Kotlin faz isso automaticamente.
 
 
 @Entity // marca a classe como uma entidade JPA, que vai ser mapeada para o banco de dados.

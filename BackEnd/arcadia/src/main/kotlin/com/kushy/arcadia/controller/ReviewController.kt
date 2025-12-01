@@ -9,18 +9,18 @@ import com.kushy.arcadia.service.review.ReviewService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
-@RestController
-@RequestMapping("/reviews")
+@RestController                                                                                // Marca a classe como controller rest, recebendo requisição HTTP e retornando JSON
+@RequestMapping("/reviews")                                                                 // define a rota base dos endpoints.
 @CrossOrigin(origins = ["*"])
 class ReviewController(
     private val reviewService: ReviewService,
 ) {
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.CREATED)                                                       // retorna 201 ao criar
     fun create(@RequestBody dto: ReviewCreateDTO): ReviewResponseDTO {
 
-        return reviewService.createReview(dto)
+        return reviewService.createReview(dto)                                               // chama o service para executar as funcs
     }
 
     @GetMapping("/{id}")
@@ -64,7 +64,7 @@ class ReviewController(
 
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)  // 204
     fun delete(@PathVariable id: Long) {
 
         reviewService.deleteReview(id)

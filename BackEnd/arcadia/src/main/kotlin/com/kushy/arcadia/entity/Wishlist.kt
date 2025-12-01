@@ -12,9 +12,6 @@ class Wishlist(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0L,
 
-
-
-
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     var user: User = User(),

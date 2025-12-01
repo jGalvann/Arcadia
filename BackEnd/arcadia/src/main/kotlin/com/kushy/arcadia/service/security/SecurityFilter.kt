@@ -34,7 +34,7 @@ class SecurityFilter(
 
     ) {
 
-        if (request.servletPath.startsWith("/auth")) {
+        if (request.servletPath.startsWith("/auth")) {  // o /auth é onde o usuário faz login, ent não há necessidade de validar as credenciais do mesmo
             filterChain.doFilter(request, response)
             return
         }
@@ -57,7 +57,7 @@ class SecurityFilter(
                 // se estiver inválido, ou expirado, vai ter retorno NULL
 
 
-            if (subject != null) { // checa se o token tava podre veio
+            if (subject != null) { // checa se o token tava podre véio
 
                 val usuario: User? = userRepository.findByEmail(subject)
                 // Busca o usuário que corresponde ao subject.

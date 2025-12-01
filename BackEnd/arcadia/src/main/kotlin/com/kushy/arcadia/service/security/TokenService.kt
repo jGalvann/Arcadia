@@ -16,7 +16,7 @@ import java.time.ZoneOffset
 class TokenService {
 
     @Value("\${api.security.token.secret}")         // pega o valor da api.secutiry.... definida no applicationProperties
-    private lateinit var secret : String     // precisa desse lateinit
+    private lateinit var secret : String            // precisa desse lateinit
     // metodo de criação/geração do token, que vai ser usando qndo o usuário for fzr login/registro
 
     fun generateToken (user: User): String {

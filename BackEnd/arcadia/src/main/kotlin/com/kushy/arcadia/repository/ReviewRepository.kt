@@ -4,6 +4,12 @@ import com.kushy.arcadia.entity.Review
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
+/*
+    O repository é a camada de Acesso de dados. É responsável pela comunicação direta com o banco de dados.
+    Utiliza do JPA/Hibernate para criar, ler, atualizar e deletar os dados ( CRUD )
+
+ */
+
 @Repository
 interface ReviewRepository : JpaRepository<Review, Long> {
 

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service
 
 @Service // marca um bean do tipo serviço.
 
+
 class CustomUserDetailsService(
 
     // essa parte aqui, não é o padrão dessa classe, o padrão faria ela buscar de forma genérica, ou em memória.

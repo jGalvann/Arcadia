@@ -13,22 +13,27 @@ import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 import java.time.format.DateTimeFormatter
 
+/*
+    O service é onde fica localizada a lógica e a regra de negócio, basicamente é quem o controller chama para executar as coisas.
+
+ */
 @Service
 class ReviewService(
     private val reviewRepository: ReviewRepository,
     private val securityUtils: SecurityUtils
 ) {
 
-    fun createReview(dto: ReviewCreateDTO): ReviewResponseDTO {
 
-        val authUser: User = securityUtils.getAuthenticatedUser()
+    fun createReview(dto: ReviewCreateDTO): ReviewResponseDTO {                         // recebe as info que foram passadas no controller
+
+        val authUser: User = securityUtils.getAuthenticatedUser()                       // autentica o usuário
 
         // validação nota
         if (dto.nota < 0.5f || dto.nota > 5f)
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Nota deve estar entre 0.5 e 5.0")
 
 
-        if (reviewRepository.existsByUserIdAndRawgGameId(authUser.id!!, dto.gameId)) {
+        if (reviewRepository.existsByUserIdAndRawgGameId(authUser.id!!, dto.gameId)) {  // o usuário pode somente fazer 1 review do mesmo jogo
             throw ResponseStatusException(HttpStatus.CONFLICT, "O usuário já fez review desse jogo. ( RAWG ID: ${dto.gameId}")
         }
 
@@ -112,7 +117,6 @@ class ReviewService(
     }
 
 
-
     fun getReviewById(id: Long): ReviewResponseDTO {
         val review = reviewRepository.findById(id)
             .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Review não encontrada") }
@@ -138,7 +142,7 @@ class ReviewService(
         return reviews.map { it.toDTO() }
     }
 
-    fun Review.toDTO() = ReviewResponseDTO(
+    fun Review.toDTO() = ReviewResponseDTO( // mapper
         id = this.id!!,
         userId = this.user.id!!,
         gameId = this.rawgGameId,

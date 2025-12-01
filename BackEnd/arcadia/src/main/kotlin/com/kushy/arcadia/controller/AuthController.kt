@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 
-@RestController
-    // Marca a classe como um controller Rest, ou seja, os métodos retornam JSON/resposta HTTP.
+@RestController                                                                                     // Marca a classe como um controller Rest, ou seja, os métodos retornam JSON/resposta HTTP.
 
-@RequestMapping("/auth")
-    // Prefixa todas as rotas dessa classe como /auth.
+@RequestMapping("/auth")                                                                         // Prefixa todas as rotas dessa classe como /auth.
+
 
 class AuthController(
     private val userRepository: UserRepository,
@@ -53,7 +52,7 @@ class AuthController(
 
                                                                                                     // endpoint para se registrar
     @PostMapping("/register") // /auth/register
-    fun register(@RequestBody body: RegisterRequestDTO): ResponseEntity<ResponseDTO> {
+    fun register(@RequestBody body: RegisterRequestDTO): ResponseEntity<ResponseDTO> {              // a func pede o corpo do RegisterRequestDTO e retorna o response DTO
 
 
         val existingUser: User? = userRepository.findByEmail(body.email)                            // verifica se o user existe, retorna um User ou null

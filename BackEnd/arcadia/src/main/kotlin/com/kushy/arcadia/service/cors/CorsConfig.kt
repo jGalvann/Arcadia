@@ -7,14 +7,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 /*
     CORS -> cross-origin resource sharing.
-    Restringe como o código JS de uma página pode interagir com recursos de um dóminio diferente.
+    Restringe como o código JS de uma página pode interagir com recursos de um domínio diferente.
 
  */
 @Configuration
 class CorsConfig : WebMvcConfigurer {
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
-            .allowedOrigins("http://localhost:5173")
+            .allowedOrigins("http://localhost:5173")    // endpoint do front
             .allowedMethods("GET", "POST", "DELETE", "PUT")
             .allowedHeaders("*")
     }
