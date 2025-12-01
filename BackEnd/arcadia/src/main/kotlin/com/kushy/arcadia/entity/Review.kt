@@ -32,7 +32,14 @@ class Review(
 
     var status: String = "", // zerou, jogando, abandonado... // n vou fzr uma enum class para isso, melhor deixar essa parte com o front.
 
-    var dataReview: LocalDate = LocalDate.now()
-) {
+    var dataReview: LocalDate = LocalDate.now(),
+
+    // novos campos para contemplar o sistema de like e deslike
+
+    var countLike: Int = 0,
+
+    var countDislike: Int = 0,
+
+    ) {
 
 }

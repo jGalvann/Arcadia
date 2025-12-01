@@ -28,7 +28,6 @@ class ReviewService(
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, "Nota deve estar entre 0.5 e 5.0")
 
 
-
         if (reviewRepository.existsByUserIdAndRawgGameId(authUser.id!!, dto.gameId)) {
             throw ResponseStatusException(HttpStatus.CONFLICT, "O usuário já fez review desse jogo. ( RAWG ID: ${dto.gameId}")
         }
@@ -38,7 +37,7 @@ class ReviewService(
             rawgGameId = dto.gameId,
             nota = dto.nota,
             textReview = dto.textReview,
-            status = dto.status
+            status = dto.status,
         )
 
         return reviewRepository.save(review).toDTO()
@@ -55,7 +54,7 @@ class ReviewService(
         val isOwner = review.user.id == authUser.id
         val isAdmin = securityUtils.isAdmin()
 
-                                                                                        //  Forbidden se NÃO for o dono E NÃO for Admin
+        //  Forbidden se NÃO for o dono E NÃO for Admin
         if (!isOwner && !isAdmin)
             throw ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para alterar esta review")
         // atualização parcial
@@ -69,6 +68,28 @@ class ReviewService(
 
         return reviewRepository.save(review).toDTO()
     }
+
+    fun addLike(id:Long): ReviewResponseDTO {
+
+        val review = reviewRepository.findById(id)
+            .orElseThrow{ ResponseStatusException(HttpStatus.NOT_FOUND, "Reviews não encontrada")}
+
+        review.countLike += 1
+
+        return reviewRepository.save(review).toDTO()
+
+    }
+
+    fun addDislike(id: Long): ReviewResponseDTO {
+        val review = reviewRepository.findById(id)
+            .orElseThrow { ResponseStatusException(HttpStatus.NOT_FOUND, "Review não encontrada") }
+
+        // Incrementa o contador
+        review.countDislike += 1
+
+        return reviewRepository.save(review).toDTO()
+    }
+
 
     fun deleteReview(id: Long) {
 
@@ -87,19 +108,9 @@ class ReviewService(
             )
         }
 
-
         reviewRepository.deleteById(id)
     }
 
-    fun Review.toDTO() = ReviewResponseDTO(
-        id = this.id!!,
-        userId = this.user.id!!,
-        gameId = this.rawgGameId,
-        nota = this.nota,
-        textReview = this.textReview,
-        status = this.status,
-        dataReview = this.dataReview.format(DateTimeFormatter.ISO_DATE)
-    )
 
 
     fun getReviewById(id: Long): ReviewResponseDTO {
@@ -120,4 +131,18 @@ class ReviewService(
         return reviewRepository.findByRawgGameId(gameId) // <-- CORRIGIDO
             .map { it.toDTO() }
     }
+
+
+    fun Review.toDTO() = ReviewResponseDTO(
+        id = this.id!!,
+        userId = this.user.id!!,
+        gameId = this.rawgGameId,
+        nota = this.nota,
+        textReview = this.textReview,
+        status = this.status,
+        dataReview = this.dataReview.format(DateTimeFormatter.ISO_DATE),
+        countLike = this.countLike,
+        countDislike = this.countDislike,
+    )
+
 }

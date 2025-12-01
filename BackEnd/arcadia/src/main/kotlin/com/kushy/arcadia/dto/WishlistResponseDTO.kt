@@ -4,4 +4,4 @@ data class WishlistResponseDTO(
     val id: Long,
     val gameId: Long,
 
-)
+    )

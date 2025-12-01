@@ -9,4 +9,6 @@ data class ReviewResponseDTO(
     val textReview: String?,
     val status: String?,
     val dataReview: String,
+    val countLike: Int,
+    val countDislike: Int,
 )

@@ -47,6 +47,17 @@ class ReviewController(
         return reviewService.updateReview(id, dto)
     }
 
+    @PutMapping("/{id}/like")
+    fun likeReview(@PathVariable id: Long): ReviewResponseDTO {
+        return reviewService.addLike(id)
+    }
+
+    @PutMapping("/{id}/dislike")
+    fun dislikeReview(@PathVariable id: Long): ReviewResponseDTO {
+        return reviewService.addDislike(id)
+    }
+
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable id: Long) {

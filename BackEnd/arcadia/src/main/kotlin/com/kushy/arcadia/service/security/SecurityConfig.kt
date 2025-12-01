@@ -37,10 +37,10 @@ class SecurityConfig( // Essa é uma classe meio que padrão do Spring, mas aind
                 authorize   // Aqui ele faz com que os endPoints abaixo não precisem de autenticação.
                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/games").permitAll()
+                    .requestMatchers("/error").permitAll()      // foi necesário adicionar o /errors pq qndo alguma requisição parava no meio, retornando um erro, ele ia para esse endpoint e n aceitava a perm do usuario, fzndo com que um erro 404 virasse um 403
 
                     .anyRequest().authenticated() // Qualquer outra request, o user vai precisar estar autenticado
-                                                  // Caso não esteja, vai ter um 403 Forbidden pro maluco
+                // Caso não esteja, vai ter um 403 Forbidden pro maluco
             }
             // A N T E S de fzr o authorize do HttpRequest, ele roda esse filtro
             // o filtro ve se o token ta correto, e dai add o usuário no contexto.

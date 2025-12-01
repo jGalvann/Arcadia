@@ -51,7 +51,7 @@ class AuthController(
     }
 
 
-        // endpoint para se registrar
+                                                                                                    // endpoint para se registrar
     @PostMapping("/register") // /auth/register
     fun register(@RequestBody body: RegisterRequestDTO): ResponseEntity<ResponseDTO> {
 
