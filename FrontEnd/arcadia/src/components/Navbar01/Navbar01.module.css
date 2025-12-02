@@ -1,6 +1,30 @@
 .navbar01 {
-    display: flex;
-    align-items: center;
-    gap: 7rem;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 7rem; /* Enorme no desktop, ok se tiver espaço */
+  border-radius: 0.625rem; /* Convertido de 10px */
+  
+  /* Garante que se a tela for estreita demais, os itens não vazem */
+  max-width: 100%; 
+  box-sizing: border-box;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets (Notebooks menores e iPads) */
+@media (max-width: 1024px) {
+  .navbar01 {
+    gap: 3rem; /* Reduzimos pela metade para caber em telas médias */
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .navbar01 {
+    gap: 1rem; /* Gap pequeno para caber na tela vertical do celular */
+    
+    flex-wrap: wrap; 
+    
+    justify-content: center; /* Centraliza os itens se eles quebrarem linha */
+  }
 }

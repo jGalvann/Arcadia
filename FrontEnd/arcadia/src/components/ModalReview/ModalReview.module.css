@@ -1,75 +1,113 @@
+/* Fundo Escuro (Overlay) */
 .reviewOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7); /* Levemente mais escuro para foco */
+  backdrop-filter: blur(0.125rem); /* Adicionado desfoque de fundo (2px) */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999999;
 }
 
+/* Janela do Modal */
 .reviewModal {
   background: #1c1c1c;
-  padding: 20px;
-  width: 350px;
-  border-radius: 10px;
+  padding: 1.25rem; /* Convertido de 20px */
+  border-radius: 0.625rem; /* Convertido de 10px */
   color: white;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem; /* Convertido de 10px */
+  
+  /* Lógica de Largura Responsiva */
+  width: 90%; /* Ocupa 90% da tela em dispositivos pequenos */
+  max-width: 21.875rem; /* Trava em ~350px em telas grandes */
+  
+  box-shadow: 0 0.625rem 1.5625rem rgba(0,0,0,0.5);
+  box-sizing: border-box;
 }
 
+/* Inputs e Textarea */
 .reviewModal input,
 .reviewModal textarea {
   background: #262626;
   color: white;
-  border: 1px solid #444;
-  padding: 8px;
-  border-radius: 6px;
+  border: 0.0625rem solid #444; /* Convertido de 1px */
+  padding: 0.5rem; /* Convertido de 8px */
+  border-radius: 0.375rem; /* Convertido de 6px */
   width: 100%;
+  
+  /* Garante que o padding não aumente a largura total */
+  box-sizing: border-box; 
+  font-family: inherit; /* Mantém a fonte Poppins do projeto */
+  outline: none;
+  resize: vertical; /* Permite redimensionar apenas a altura do textarea */
+  font-size: 0.9rem;
 }
 
+.reviewModal input:focus,
+.reviewModal textarea:focus {
+  border-color: #0090dd;
+}
+
+/* Botões (Container) */
 .reviewBtn {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 0.625rem; /* Convertido de 10px */
+  gap: 1rem; /* Garante espaço entre os botões */
+}
+
+/* Estilo Base dos Botões */
+.btnSave, .btnCancel {
+  padding: 0.5rem 0.875rem; /* Convertido de 8px 14px */
+  border: none;
+  border-radius: 0.375rem; /* Convertido de 6px */
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: opacity 0.2s, transform 0.1s;
+  flex: 1; /* Faz os botões terem o mesmo tamanho */
 }
 
 .btnSave {
   background: #4caf50;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
 }
 
 .btnCancel {
   background: #d9534f;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
 }
 
+.btnSave:hover, .btnCancel:hover {
+  opacity: 0.9;
+}
+
+.btnSave:active, .btnCancel:active {
+  transform: scale(0.98);
+}
+
+/* Select de Status */
 .statusSelect {
   width: 100%;
-  padding: 8px 10px;
-  margin-top: 5px;
-  border-radius: 6px;
+  padding: 0.5rem 0.625rem; /* Convertido de 8px 10px */
+  margin-top: 0.3125rem; /* Convertido de 5px */
+  border-radius: 0.375rem; /* Convertido de 6px */
   background-color: #1f1f1f;
-  border: 1px solid #555;
+  border: 0.0625rem solid #555;
   color: #fff;
-  font-size: 14px;
+  font-size: 0.875rem; /* Convertido de 14px */
   outline: none;
   transition: 0.2s;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .statusSelect:hover,
 .statusSelect:focus {
   border-color: #0090dd;
-  box-shadow: 0 0 3px #0090dd;
+  box-shadow: 0 0 0.1875rem #0090dd; /* Convertido de 3px */
 }
 
 .statusSelect option {
@@ -77,3 +115,21 @@
   color: #fff;  
 }
 
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 480px) {
+  .reviewModal {
+    padding: 1rem; /* Um pouco menos de padding em telas muito pequenas */
+  }
+
+  .reviewBtn {
+    flex-direction: column-reverse; /* No celular, Cancelar em baixo e Salvar em cima (opcional) */
+    /* Ou mantenha row se preferir lado a lado */
+    flex-direction: row; 
+  }
+
+  .btnSave, .btnCancel {
+    padding: 0.7rem; /* Área de toque maior */
+    font-size: 1rem;
+  }
+}

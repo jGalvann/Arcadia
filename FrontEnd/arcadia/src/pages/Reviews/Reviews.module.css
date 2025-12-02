@@ -10,15 +10,17 @@
 
 .title {
   font-size: 1.1rem;
-  font-family: 'Poppins-ExtraLight';
-  max-width: 20%;
+  font-family: 'Poppins-ExtraLight', sans-serif;
+  max-width: 20rem; /* Mudei de 20% para rem para ter um tamanho fixo mais seguro */
+  display: flex; /* Adicionado para o 'gap' funcionar */
+  align-items: center; /* Alinha ícone e texto verticalmente */
   gap: 0.5rem;
   margin-left: 1rem;
   margin-top: 2rem;
 }
 
 .empty {
-  margin: 10rem;
+  margin: 10rem auto; /* Centraliza horizontalmente */
   opacity: 0.6;
   text-align: center;
   font-size: 1.2rem;
@@ -26,7 +28,29 @@
 
 .gridReviews {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas no desktop */
+  gap: 1rem; /* Padronizado para rem */
   margin-left: 1rem;
+  margin-right: 1rem; /* Adicionei margem na direita para não colar na borda */
+  margin-top: 1rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 768px) {
+  .title {
+    max-width: 100%; /* Libera a largura do título no mobile */
+    font-size: 1.3rem; /* Aumenta um pouco para leitura */
+    margin-bottom: 1rem;
+  }
+
+  .gridReviews {
+    /* Transforma em 1 coluna para ocupar a largura do celular */
+    grid-template-columns: 1fr; 
+    margin: 0 1rem; /* Ajusta margens laterais */
+  }
+
+  .empty {
+    margin: 5rem 1rem; /* Margem menor no mobile para não desperdiçar tela */
+  }
 }

@@ -11,7 +11,6 @@ import {
 function Navbar02() {
   return (
     <>
-    {/* botões da navbar02 */}
       <div className={styles.navbar02}>
         <BtnLogo />
 

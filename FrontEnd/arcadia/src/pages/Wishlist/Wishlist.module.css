@@ -16,17 +16,21 @@
   display: flex;
   align-items: center;
   margin-top: 2rem;
-  margin-left: 4.5rem;
-  }
+  /* Margem alinhada com o padding do grid no desktop */
+  margin-left: 4.5rem; 
+}
 
-/* Grid Responsivo (Igual ao Games.jsx) */
+/* Grid Responsivo */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  /* IMPORTANTE: Usei a lógica do Games.jsx (auto-fill) ao invés de fixo (5) */
+  /* minmax define o tamanho mínimo do card. 12.5rem = 200px (padrão de cards verticais) */
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
   gap: 1.5rem;
   width: 100%;
-  padding: 0 5rem 3rem 5rem; /* Padding inferior extra para não cortar */
-  justify-content: center;
+  /* Padding lateral ajustado */
+  padding: 0 5rem 3rem 5rem; 
+  justify-content: center; /* Centraliza os cards se sobrarem no canto */
   box-sizing: border-box;
 }
 
@@ -40,13 +44,11 @@
 /* Botão Remover */
 .removeButton {
   width: 100%;
-  padding: 10px;
-  background-color: #ff4d4d; /* Vermelho alerta */
-  margin-top: 8px;
-  padding: 0.6rem 1.5rem;
-  background: #ff4d4d;
+  padding: 0.6rem 1.5rem; /* Ajustado */
+  margin-top: 0.5rem; /* Convertido de 8px */
+  background: #ff4d4d; /* Vermelho alerta */
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem; /* Convertido de 8px */
   color: white;
   cursor: pointer;
   font-weight: bold;
@@ -56,7 +58,7 @@
 
 .removeButton:hover {
   background-color: #ff2b2b;
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem); /* Convertido de -2px */
 }
 
 /* Estado Vazio */
@@ -68,17 +70,44 @@
   text-align: center;
   margin-top: 5rem;
   color: #aaa;
+  padding: 0 1rem;
 }
 
 .noFav h2 {
   font-family: 'Poppins-Bold', sans-serif;
   margin-bottom: 0.5rem;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-  padding: 2rem;
-  justify-items: center; 
-  text-align: center;
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets (Notebooks menores) */
+@media (max-width: 1024px) {
+  .grid {
+    padding: 0 2rem 2rem 2rem; /* Reduz o padding lateral de 5rem para 2rem */
+  }
+
+  .titulo {
+    margin-left: 2rem; /* Alinha o título com o novo padding do grid */
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .titulo {
+    margin-left: 0;
+    justify-content: center; /* Centraliza o título no mobile */
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+    padding: 0 1rem 2rem 1rem; /* Padding mínimo nas laterais */
+    gap: 1rem;
+    /* Ajusta para caber 2 cards menores ou 1 grande */
+    grid-template-columns: repeat(auto-fill, minmax(9.375rem, 1fr)); 
+  }
+
+  .removeButton {
+    padding: 0.8rem; /* Botão um pouco maior para toque */
+  }
 }

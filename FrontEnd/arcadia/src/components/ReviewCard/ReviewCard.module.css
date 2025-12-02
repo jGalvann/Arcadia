@@ -1,18 +1,21 @@
 /* CARD PRINCIPAL */
 .reviewCard {
   background-color: #1c1c1c;
-  width: 40rem;
+  /* LÓGICA RESPONSIVA: Ocupa 100% do pai, mas para de crescer em 40rem */
+  width: 100%;
+  max-width: 40rem; 
   padding: 1.4rem 1.6rem;
-  border-radius: 14px;
-  border: 1px solid #333;
+  border-radius: 0.875rem; /* Convertido de 14px */
+  border: 0.0625rem solid #333; /* Convertido de 1px */
   transition: .2s;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-sizing: border-box; /* Garante que padding não estoure a largura */
 }
 
 .reviewCard:hover {
-  transform: translateY(-3px);
+  transform: translateY(-0.1875rem); /* Convertido de -3px */
   border-color: #00aaff;
 }
 
@@ -21,6 +24,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Garante quebra de linha se o nome for muito longo no mobile */
+  gap: 0.5rem;
 }
 
 /* Nome do jogo */
@@ -28,7 +33,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: #00aaff;
-  letter-spacing: .5px;
+  letter-spacing: 0.03125rem; /* Convertido de .5px */
 }
 
 /* Nota */
@@ -38,7 +43,7 @@
   color: #ffcc00;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.375rem; /* Convertido de 6px */
 }
 
 /* Texto */
@@ -46,7 +51,7 @@
   font-size: 1rem;
   line-height: 1.45;
   opacity: .95;
-  word-break: break-word;
+  word-break: break-word; /* Evita que palavras gigantes quebrem o layout */
 }
 
 /* RODAPÉ DO CARD: ações + likes */
@@ -55,18 +60,20 @@
   justify-content: space-between; /* esquerda x direita */
   align-items: center;
   margin-top: .8rem;
+  flex-wrap: wrap; /* Permite quebrar linha se faltar espaço */
+  gap: 1rem;
 }
 
 /* Botões de ação */
 .actions {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem; /* Convertido de 10px */
 }
 
 .editBtn,
 .deleteBtn {
-  padding: 6px 14px;
-  border-radius: 8px;
+  padding: 0.375rem 0.875rem; /* Convertido de 6px 14px */
+  border-radius: 0.5rem; /* Convertido de 8px */
   border: none;
   cursor: pointer;
   color: white;
@@ -86,20 +93,20 @@
 /* Likes */
 .likeContainer {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem; /* Convertido de 10px */
 }
 
 .likeBtn,
 .dislikeBtn {
   background: #1e1e1e;
-  border: 1px solid #444;
-  padding: 6px 12px;
-  border-radius: 8px;
+  border: 0.0625rem solid #444; /* Convertido de 1px */
+  padding: 0.375rem 0.75rem; /* Convertido de 6px 12px */
+  border-radius: 0.5rem; /* Convertido de 8px */
   cursor: pointer;
   color: white;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.375rem; /* Convertido de 6px */
   transition: .2s;
 }
 
@@ -122,19 +129,26 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
+  padding: 1rem; /* Padding para o modal não colar na borda do celular */
+  backdrop-filter: blur(0.125rem); /* Efeito blur suave */
 }
 
 .modal {
   background: #1c1c1c;
   padding: 2rem;
-  width: 450px;
-  border-radius: 14px;
-  border: 1px solid #333;
-  box-shadow: 0 0 18px rgba(0,0,0,0.7);
+  
+  /* LÓGICA RESPONSIVA DO MODAL */
+  width: 100%; /* Tenta ocupar tudo */
+  max-width: 28.125rem; /* Trava em 450px (convertido) */
+  
+  border-radius: 0.875rem; /* Convertido de 14px */
+  border: 0.0625rem solid #333; /* Convertido de 1px */
+  box-shadow: 0 0 1.125rem rgba(0,0,0,0.7); /* Convertido de 18px */
   display: flex;
   flex-direction: column;
   gap: 1rem;
   animation: fadeIn .25s ease-in-out;
+  box-sizing: border-box;
 }
 
 /* Animação */
@@ -161,45 +175,43 @@
 .modal textarea,
 .modal select {
   width: 100%;
-  padding: 8px 10px;
+  padding: 0.5rem 0.625rem; /* Convertido de 8px 10px */
   background: #252525;
-  border: 1px solid #444;
-  border-radius: 8px;
+  border: 0.0625rem solid #444; /* Convertido de 1px */
+  border-radius: 0.5rem; /* Convertido de 8px */
   color: #fff;
   font-size: .95rem;
   outline: none;
   transition: .2s;
-}
-
-.modal textarea {
-  min-height: 90px;
-  resize: none;
+  box-sizing: border-box; /* Garante que padding não estoure */
+  resize: vertical; /* Permite redimensionar apenas a altura */
 }
 
 .modal input:focus,
 .modal textarea:focus,
 .modal select:focus {
   border-color: #0090dd;
-  box-shadow: 0 0 4px #0090dd;
+  box-shadow: 0 0 0.25rem #0090dd; /* Convertido de 4px */
 }
 
 /* Botões do modal */
 .modalButtons {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 0.625rem; /* Convertido de 10px */
   margin-top: 1rem;
 }
 
 .saveBtn,
 .cancelBtn {
-  padding: 8px 18px;
-  border-radius: 8px;
+  padding: 0.5rem 1.125rem; /* Convertido de 8px 18px */
+  border-radius: 0.5rem; /* Convertido de 8px */
   border: none;
   cursor: pointer;
   font-weight: 500;
   color: white;
   transition: .2s;
+  font-family: inherit; /* Garante a fonte correta */
 }
 
 .saveBtn { background-color: #27ae60; }
@@ -208,4 +220,37 @@
 .saveBtn:hover,
 .cancelBtn:hover {
   opacity: .85;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 480px) {
+  /* No celular, o rodapé do card se ajusta para botões não ficarem espremidos */
+  .footerRow {
+    flex-direction: column;
+    align-items: stretch; /* Estica para ocupar a largura */
+    gap: 1rem;
+  }
+
+  .actions, .likeContainer {
+    width: 100%;
+    justify-content: space-between; /* Espalha os botões */
+  }
+
+  /* Ajustes do Modal no Celular */
+  .modal {
+    padding: 1.25rem; /* Padding um pouco menor */
+  }
+
+  .modalButtons {
+    flex-direction: column-reverse; /* Coloca o Cancelar embaixo e Salvar em cima (mais fácil pro dedão) */
+    gap: 0.8rem;
+  }
+
+  .saveBtn, .cancelBtn {
+    width: 100%; /* Botões ocupam a largura toda para toque fácil */
+    padding: 0.8rem;
+    font-size: 1rem;
+    text-align: center;
+  }
 }

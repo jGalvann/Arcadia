@@ -1,27 +1,67 @@
 .navbar02 {
-    display: flex;
-    gap: 7rem;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
-    align-items: center;
-
+  display: flex;
+  gap: 7rem; /* Gap original grande para Desktop */
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  align-items: center;
+  
+  /* Garante que não estoure a tela */
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .botoes {
-    display: flex;
-    gap: 6rem;
-    justify-content: right;
-    width: 80%;
-    align-items: center;
+  display: flex;
+  gap: 6rem; /* Gap original grande */
+  justify-content: flex-end; /* 'right' não é padrão flex, use flex-end */
+  width: 80%;
+  align-items: center;
 }
 
-.line{
+.line {
   width: 100%;  
-  height: 0.5px;     
+  height: 0.03125rem; /* Convertido de 0.5px (Atenção: muito fino, pode sumir em algumas telas) */
   margin: 0 auto;
-    background: linear-gradient(
+  background: linear-gradient(
     to right,
     #FFBD2C 50%,    
     #1AC0EE 50%   
   );
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets (Notebooks pequenos / Tablets) */
+@media (max-width: 1024px) {
+  .navbar02 {
+    gap: 3rem; /* Reduz gap pela metade */
+  }
+
+  .botoes {
+    gap: 2rem;
+    width: 90%; /* Aumenta a largura útil */
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .navbar02 {
+    flex-direction: column; /* Empilha os itens */
+    gap: 1rem;
+    margin-left: 0; /* Remove margem lateral para centralizar */
+    padding: 1rem; /* Adiciona padding interno */
+    justify-content: center;
+  }
+
+  .botoes {
+    width: 100%; /* Ocupa toda a largura */
+    justify-content: center; /* Centraliza os botões */
+    gap: 1rem; /* Gap pequeno para botões ficarem próximos */
+    flex-wrap: wrap; /* Se tiver muitos botões, eles quebram linha */
+  }
+  
+  /* Se você quiser que a linha fique um pouco mais visível no mobile */
+  .line {
+      height: 0.0625rem; /* ~1px no mobile para garantir visibilidade */
+  }
 }

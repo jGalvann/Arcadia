@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1600px; /* Limite de largura para telas muito grandes */
+  max-width: 100rem; /* Convertido de 1600px */
   padding: 2rem 5rem;
   box-sizing: border-box;
   flex-wrap: wrap;
@@ -38,16 +38,16 @@
 
 .filtro {
   /* Tamanho e Espaçamento */
-  height: 40px; /* Altura fixa para alinhar com a barra se precisar */
-  padding: 0 20px;
-  min-width: 220px; /* Largura mínima para o texto não cortar */
+  height: 2.5rem; /* Convertido de 40px */
+  padding: 0 1.25rem; /* Convertido de 20px */
+  min-width: 13.75rem; /* Convertido de 220px */
 
-  /* Estilo Visual (Copiado do seu Input) */
+  /* Estilo Visual */
   background-color: #1e1e1e;
   color: #fff;
-  border: 1px solid #444;
-  border-radius: 15px;
-  font-size: 15px;
+  border: 0.0625rem solid #444; /* Convertido de 1px */
+  border-radius: 0.9375rem; /* Convertido de 15px */
+  font-size: 0.9375rem; /* Convertido de 15px */
   
   /* Comportamento */
   outline: none;
@@ -66,28 +66,29 @@
 
 /* Estiliza as opções que abrem (Dropdown) */
 .filtro option {
-    background-color: #1e1e1e;
-    color: #fff;
-    padding: 10px;
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 0.625rem; /* Convertido de 10px */
 }
 
 /* Grid dos Cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* Mantém cards com no mínimo 200px (12.5rem), se ajustando automaticamente */
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); 
   gap: 1.5rem;
   width: 100%;
-  max-width: 1600px;
+  max-width: 100rem; /* Convertido de 1600px */
   padding: 0 5rem;
   justify-content: center;
   box-sizing: border-box;
 }
 
-/* Ajuste para telas muito grandes (opcional) */
-@media (min-width: 1800px) {
-    .grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
+/* Ajuste para telas muito grandes (Monitores 4k ou Ultrawide) */
+@media (min-width: 112.5rem) { /* Convertido de 1800px */
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 /* Botão Carregar Mais */
@@ -98,7 +99,7 @@
   background: #ffab19;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 0.75rem; /* Convertido de 12px */
   font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -106,6 +107,53 @@
 
 .loadMore:hover {
   background-color: #ffb028;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 171, 25, 0.3);
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 0.75rem rgba(255, 171, 25, 0.3);
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets e Notebooks menores */
+@media (max-width: 1024px) {
+  .headerContainer, .grid {
+    padding: 2rem 2rem; /* Reduz o padding lateral de 5rem para 2rem */
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .headerContainer {
+    flex-direction: column; /* Empilha Título e Controles */
+    align-items: stretch; /* Estica para ocupar a largura */
+    gap: 1.5rem;
+    padding: 1.5rem 1rem; /* Padding lateral menor */
+  }
+
+  .titulo {
+    justify-content: center; /* Centraliza o título */
+    font-size: 1.5rem;
+  }
+
+  .controles {
+    flex-direction: column; /* Empilha SearchBar e Filtro */
+    width: 100%;
+  }
+
+  .filtro {
+    width: 100%; /* Filtro ocupa largura total para facilitar o toque */
+    min-width: auto; /* Remove a trava de largura mínima */
+  }
+
+  .grid {
+    padding: 0 1rem; /* Padding bem pequeno nas laterais do grid */
+    gap: 1rem; /* Espaço menor entre os cards */
+    /* Ajusta o grid para 2 colunas em telas médias ou 1 em muito pequenas */
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); 
+  }
+
+  .loadMore {
+    width: 90%; /* Botão largo no mobile */
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
 }

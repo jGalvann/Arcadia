@@ -3,15 +3,28 @@
   width: 100%;
   max-width: 88rem;
   margin-left: auto;     
-  margin-right: auto;    
+  margin-right: auto;
+  /* Adicionado padding para garantir que não cole na borda em telas menores */
+  padding: 0 1rem; 
+  box-sizing: border-box;
+}
+
+/* Área dos Botões e Título */
+.botoesscroll {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem; /* Espaço entre o topo e os cards */
 }
 
 .titulo {
   font-size: 1.1rem;
-  font-family: 'Poppins-ExtraLight';
+  font-family: 'Poppins-ExtraLight', sans-serif;
   color: #fff;
   margin-left: 2rem;
-  border-left: 4px solid #00aaff;
+  border-left: 0.25rem solid #00aaff; /* Convertido de 4px */
   padding-left: 0.5rem;
 }
 
@@ -22,6 +35,12 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  padding-bottom: 1rem; /* Respiro para sombra não cortar */
+  
+  /* Melhora a rolagem no mobile */
+  -webkit-overflow-scrolling: touch; 
+  /* Faz os cards "travarem" na posição correta ao soltar */
+  scroll-snap-type: x mandatory; 
 }
 
 .reviews::-webkit-scrollbar {
@@ -29,7 +48,8 @@
 }
 
 .reviewWrapper {
-  flex: 0 0 20rem; /* largura fixa do card */
+  flex: 0 0 20rem; /* largura fixa do card no desktop (~320px) */
+  scroll-snap-align: start; /* O card alinha no início ao parar de rolar */
 }
 
 /* BOTÕES DE NAVEGAÇÃO */
@@ -38,22 +58,45 @@
   color: white;
   border: none;
   padding: 0.3rem 0.8rem;
-  margin: 0 5px;
+  margin: 0 0.3125rem; /* Convertido de 5px */
   cursor: pointer;
   font-size: 1.4rem;
-  border-radius: 5px;
-  margin-top: 1rem;
-}
-
-.botoesscroll {
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+  border-radius: 0.3125rem; /* Convertido de 5px */
+  /* margin-top removido pois o container flex já alinha */
+  transition: all 0.5s ease;
 }
 
 .arrow:hover {
   background: #555;
-  transition: all 0.5s ease;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0; /* Remove padding lateral do container para o carrossel ir até a borda */
+    margin-top: 2rem;
+  }
+
+  .botoesscroll {
+    padding: 0 1rem; /* Adiciona padding só nos botões/título */
+  }
+
+  .titulo {
+    margin-left: 0; /* Remove margem esquerda excessiva no mobile */
+    font-size: 1rem;
+  }
+
+  .reviews {
+    gap: 1rem; /* Diminui o espaço entre cards */
+    padding: 0 1rem 1rem 1rem; /* Padding interno para o primeiro card não colar */
+  }
+
+  .reviewWrapper {
+    /* TRUQUE DE UX: 85vw faz o card ocupar 85% da tela. 
+       Isso deixa um pedacinho do próximo card visível, 
+       mostrando pro usuário que tem mais coisa pro lado. */
+    flex: 0 0 85vw; 
+    scroll-snap-align: center; /* No mobile, centralizar o card é mais agradável */
+  }
 }

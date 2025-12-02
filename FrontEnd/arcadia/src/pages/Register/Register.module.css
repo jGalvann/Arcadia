@@ -2,38 +2,49 @@
   width: 95%;
   margin-top: 0.5rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end; /* 'end' funciona, mas flex-end é mais compatível */
 }
-
 
 .container {
   display: flex;
   gap: 5rem;
   padding: 0.3rem 2rem;
+  width: 100%;
+  box-sizing: border-box; /* Garante que o padding não estoure a largura */
+  min-height: 85vh; /* Garante altura mínima para centralizar verticalmente se quiser */
+  align-items: center; /* Centraliza verticalmente Form e Imagem */
 }
 
-
+/* Área do Formulário (Esquerda) */
 .containerdados {
   background-color: #363636;
-  border-radius: 20px;
+  border-radius: 1.25rem; /* Convertido de 20px */
   width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  padding: 3rem 1rem; /* Adicionado padding interno para o conteúdo não colar na borda */
 }
 
 .containerdados h1 {
   font-weight: 900;
   font-size: 5.5rem;
+  margin: 0; /* Reset de margem padrão */
+  line-height: 1.1;
+  text-align: center;
 }
 
 .containerdados p {
   font-size: 1.6rem;
   margin-bottom: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  color: #ddd;
 }
 
+/* Inputs e Botão */
 .campospreencher {
   width: 100%;
   display: flex;
@@ -44,16 +55,15 @@
 }
 
 .campospreencher input {
-  font-family: 'Poppins-Light';
+  font-family: 'Poppins-Light', sans-serif;
   background-color: #3d3d3d;
   padding: 1.2rem;
-  border-radius: 30px;
+  border-radius: 1.875rem; /* Convertido de 30px */
   border: none;
   font-size: 1.2rem;
   width: 70%;
   outline: none;
   color: white;
-
 }
 
 .campospreencher button {
@@ -61,26 +71,96 @@
   color: white;
   font-size: 1.1rem;
   border: none;
-  border-radius: 40px;
-  padding: 1rem;
+  border-radius: 2.5rem; /* Convertido de 40px */
+  padding: 1rem 2rem;
   cursor: pointer;
-  font-family: 'Poppins-Bold';
-
+  font-family: 'Poppins-Bold', sans-serif;
+  margin-top: 1rem;
+  width: 50%; /* Largura controlada para o botão */
+  transition: 0.3s;
 }
 
+.campospreencher button:hover {
+  background-color: #ffca2c;
+  transform: scale(1.05);
+}
+
+/* Área da Imagem (Direita) */
 .containerimg {
-  width: 60vw;
-  height: 40vw;
-  border-radius: 25px;
+  /* Substituímos width fixo por flex: 1 para ocupar o espaço restante sem quebrar */
+  flex: 1; 
+  height: 40vw; /* Mantemos a altura proporcional à tela */
+  max-height: 80vh; /* Limite de altura para monitores muito largos */
+  border-radius: 1.5625rem; /* Convertido de 25px */
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .containerimg img {
-  width: 120%;
+  width: 100%;
   height: 100%;
-  border-radius: 25px;
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  border-radius: 1.5625rem; /* Convertido de 25px */
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Tablets (Ajuste de fontes e larguras) */
+@media (max-width: 1024px) {
+  .container {
+    gap: 2rem;
+  }
+  
+  .containerdados h1 {
+    font-size: 3.5rem;
+  }
+  
+  .containerdados {
+    width: 45%;
+  }
+
+  .campospreencher input {
+    width: 85%;
+  }
+}
+
+/* Mobile (Celulares) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse; /* Coloca a imagem em cima (opcional) ou column para form em cima */
+    /* Sugestão: column deixa o form primeiro, que é o foco da página */
+    flex-direction: column; 
+    padding: 1rem;
+    gap: 2rem;
+    height: auto;
+  }
+
+  .containerdados {
+    width: 100%; /* Ocupa largura total */
+    padding: 2rem 1rem;
+  }
+
+  .containerdados h1 {
+    font-size: 3rem; /* Fonte menor para caber na tela */
+  }
+  
+  .containerdados p {
+    font-size: 1.2rem;
+  }
+
+  .campospreencher input {
+    width: 90%; /* Input mais fácil de clicar */
+  }
+
+  .campospreencher button {
+    width: 80%;
+  }
+
+  .containerimg {
+    width: 100%;
+    height: 15.625rem; /* Altura fixa no mobile (~250px) para não ocupar a tela toda */
+    flex: none; /* Remove o comportamento flexível */
+  }
 }

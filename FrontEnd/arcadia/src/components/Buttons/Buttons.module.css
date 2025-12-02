@@ -1,10 +1,13 @@
+/* Link de Navegação (Texto) */
 .link {
   background: none;
   border: none;
   color: #fff;
   font-size: 1.4rem;
-  font-family: 'Poppins-Light';
+  font-family: 'Poppins-Light', sans-serif;
   cursor: pointer;
+  text-decoration: none; /* Garante que não tenha sublinhado se for tag <a> */
+  display: inline-block; /* Melhora comportamento do transform */
 }
 
 .link:hover {
@@ -13,16 +16,19 @@
   transition: 0.3s;
 }
 
+/* Botão de Login (Azul) */
 .loginButton {
   background-color: #00b6e8; 
   color: #ffffff;
   font-weight: 800;
   font-size: 1.2rem;
   border: none;
-  border-radius: 30px; 
+  border-radius: 1.875rem; /* Convertido de 30px */
   padding: 0.6rem 1.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: inherit; /* Herda a fonte do projeto */
+  white-space: nowrap; /* Impede quebra de linha no texto do botão */
 }
 
 .loginButton:hover {
@@ -34,35 +40,64 @@
   transform: scale(0.97);
 }
 
+/* Ícone de Perfil (Redondo) */
 .profileIcon {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  background-color: #d9d9d900;
+  background-color: transparent; /* Alterado de hexadecimal com 00 alpha para transparent */
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* Atenção: Em flexbox horizontal (navbar), isso pode desalinhar */
+  object-fit: cover; /* Garante que a imagem dentro não distorça */
 }
 
 .profileIcon:hover {
   transform: scale(1.1);
 }
 
+/* Logo (Container) */
 .logo {
   display: inline-block;
-  
 }
 
+/* Logo (Texto) */
 .text {
-  font-family: 'Poppins-Black';
+  font-family: 'Poppins-Black', sans-serif;
   font-size: 2rem;
   color: #ffffff;
-  letter-spacing: 1px;
+  letter-spacing: 0.0625rem; /* Convertido de 1px */
   transition: color 0.3s ease;
   cursor: pointer;
   text-decoration: none;
+  line-height: 1; /* Melhora alinhamento vertical */
 }
 
 .text:hover {
   color: #f5b402;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 768px) {
+  /* No celular, reduzimos os tamanhos para o header não "estourar" */
+  
+  .text {
+    font-size: 1.5rem; /* Logo menor */
   }
+
+  .link {
+    font-size: 1.1rem; /* Links menores */
+  }
+
+  .loginButton {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .profileIcon {
+    width: 2.5rem; /* Ícone bem menor no mobile */
+    height: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+}

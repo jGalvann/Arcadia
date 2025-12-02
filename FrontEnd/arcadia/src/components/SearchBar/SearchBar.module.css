@@ -1,19 +1,41 @@
 .SearchBar {
-    width: 80%;
-    display: flex;
-    justify-content: flex-end; /* joga para a direita */
-    padding-right: 80px; /* afasta um pouco da borda */
+  width: 80%;
+  display: flex;
+  justify-content: flex-end; /* joga para a direita */
+  padding-right: 5rem; /* Convertido de 80px */
+  box-sizing: border-box; /* Garante que o padding não estoure a largura */
 }
 
 .SearchBar input {
-    width: 300;
-    max-width: 100%;
-    padding: 8px 30px;
-    border-radius: 15px;
-    border: 1px solid #444;
-    background-color: #1e1e1e;
-    color: #fff;
-    font-size: 15px;
-    outline: none;
-    transition: 0.2s;
+  width: 18.75rem; /* Convertido de 300px (estava sem unidade no original) */
+  max-width: 100%;
+  padding: 0.5rem 1.875rem; /* Convertido de 8px 30px */
+  border-radius: 0.9375rem; /* Convertido de 15px */
+  border: 0.0625rem solid #444; /* Convertido de 1px */
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 0.9375rem; /* Convertido de 15px */
+  outline: none;
+  transition: 0.2s;
+  font-family: inherit; /* Garante que a fonte seja a mesma do resto do site */
+}
+
+.SearchBar input:focus {
+  border-color: #00aaff; /* Opcional: Efeito visual ao clicar */
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 768px) {
+  .SearchBar {
+    width: 100%; /* Ocupa a largura toda no mobile */
+    padding-right: 0; /* Remove o espaçamento lateral gigante */
+    justify-content: center; /* Centraliza a barra de pesquisa no celular */
+    margin-top: 1rem; /* Adiciona um respiro se estiver empilhado */
+  }
+
+  .SearchBar input {
+    width: 90%; /* Aumenta a área de toque no mobile */
+    font-size: 1rem; /* Evita zoom automático no iOS ao digitar */
+  }
 }

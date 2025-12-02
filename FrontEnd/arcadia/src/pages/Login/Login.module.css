@@ -3,12 +3,15 @@
   height: 100vh;
   width: 100%;
   color: white;
+  overflow: hidden; /* Garante que nada saia da tela no desktop */
 }
 
+/* Lado Esquerdo (Imagem) */
 .left {
   flex: 1;
   border-radius: 0 1rem 1rem 0;
   overflow: hidden;
+  position: relative;
 }
 
 .left img {
@@ -17,6 +20,7 @@
   object-fit: cover;
 }
 
+/* Lado Direito (Formulário) */
 .right {
   flex: 1;
   display: flex;
@@ -27,6 +31,7 @@
   padding: 2rem;
   border-radius: 0 1rem 1rem 0;
   margin-bottom: 2rem;
+  overflow-y: auto; /* Permite rolar apenas o form se a tela for pequena na altura */
 }
 
 .right h1 {
@@ -34,6 +39,7 @@
   font-weight: 800;
   margin-bottom: 0.5rem;
   margin-top: 8rem;
+  line-height: 1.1;
 }
 
 .right p {
@@ -43,40 +49,44 @@
   margin-top: 3rem;
 }
 
-
 .right input {
-  font-family: 'Poppins-Light';
+  font-family: 'Poppins-Light', sans-serif;
   background-color: #3d3d3d;
   padding: 1.2rem;
-  border-radius: 30px;
+  border-radius: 1.875rem; /* Convertido de 30px */
   border: none;
   font-size: 1.2rem;
   width: 70%;
   outline: none;
   color: white;
   margin-bottom: 1rem;
-
 }
 
 .right input::placeholder {
   color: #888;
 }
 
+/* Botão */
+.botao {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .botao button {
   width: 100%;
-  max-width: 280px;
+  max-width: 17.5rem; /* Convertido de 280px */
   padding: 0.5rem;
   background-color: #00b6e8;
   border: none;
-  border-radius: 30px;
+  border-radius: 1.875rem; /* Convertido de 30px */
   color: white;
   font-weight: bold;
-  font-family: 'Poppins-Bold';
+  font-family: 'Poppins-Bold', sans-serif;
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 2rem;
-
 }
 
 .botao button:hover {
@@ -88,6 +98,66 @@
   transform: scale(0.98);
 }
 
-.navbar{
+.navbar {
   margin-right: 3rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 900px) {
+  /* Em tablets/laptops pequenos, apenas diminuímos um pouco a fonte */
+  .right h1 {
+    font-size: 3.5rem;
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Layout Mobile */
+  .container {
+    flex-direction: column; /* Empilha imagem em cima e form embaixo */
+    height: auto; 
+    min-height: 100vh;
+    overflow-y: auto; /* Permite scroll na página toda */
+  }
+
+  .left {
+    flex: none; /* Remove o flex 1 para podermos definir altura fixa */
+    width: 100%;
+    height: 25vh; /* A imagem ocupa 25% da altura da tela */
+    border-radius: 0 0 1rem 1rem; /* Arredonda apenas embaixo */
+  }
+
+  .right {
+    flex: 1;
+    width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 0;
+    justify-content: flex-start; /* Alinha mais ao topo no mobile */
+    border-radius: 0;
+    overflow-y: visible;
+  }
+
+  .right h1 {
+    font-size: 2.8rem; /* Fonte menor para caber na tela */
+    margin-top: 1rem; /* Menos espaço no topo */
+  }
+
+  .right p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .right input {
+    width: 90%; /* Input mais largo para facilitar o toque */
+  }
+  
+  .navbar {
+    margin-right: 1rem;
+  }
+  
+  .botao button {
+      margin-top: 1rem;
+  }
 }
