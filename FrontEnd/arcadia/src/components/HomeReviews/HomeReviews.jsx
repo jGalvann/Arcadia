@@ -8,6 +8,7 @@ export default function HomeReviews() {
   const [reviews, setReviews] = useState([]);
   const scrollRef = useRef(null);
 
+  // função para carregar as reviews
   async function carregarReviews() {
     try {
       const data = await reviewService.getAllReviews();
@@ -21,6 +22,7 @@ export default function HomeReviews() {
     carregarReviews();
   }, []);
 
+  // funções para os botões de scroll
   function left() {
     scrollRef.current.scrollBy({ left: -400, behavior: "smooth" });
   }
@@ -37,9 +39,10 @@ export default function HomeReviews() {
       <h2 className={styles.titulo}>AVALIAÇÕES DOS USUÁRIOS</h2>
 
       <div className={styles.reviews} ref={scrollRef}>
+        {/* de novo um map para carregar os dados, porém dessa vez puxa as reviews que tem salva no backend*/}
         {reviews.map((review) => (
           <div key={review.id} className={styles.reviewWrapper}>
-            <ReviewCard
+            <ReviewCard // componente do card da review
               review={review}
               currentUser={currentUser}
               onRefresh={carregarReviews}

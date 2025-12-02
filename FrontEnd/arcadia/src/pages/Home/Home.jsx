@@ -8,7 +8,7 @@ function Home() {
     <div className={styles.container}>
       <Navbar02 />
       
-      {/* Container que alinha o carrosel e as setas */}
+       {/* conteúdo principal da home*/}
       <div className={styles.content}>
         <ParaVoce />
         <HomeReviews />

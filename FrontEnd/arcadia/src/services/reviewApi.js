@@ -1,65 +1,121 @@
-import axios from "axios";
+import axios from 'axios'
 
-const API_URL = "http://localhost:8080/reviews";
+// URL base do serviço de reviews
+const API_URL = 'http://localhost:8080/reviews'
 
-// função para pegar o token salvo 
+/**
+ * Função auxiliar para inserir o token JWT nos headers das requisições protegidas
+ * retorna o header de Authorization configurado com o token salvo no localStorage
+ */
 const getAuthHeaders = () => {
-  const token = localStorage.getItem("token");
-  return { headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    };
-};
-
-// Servico com todas as chamadas de API relacionadas a reviews
-export const reviewService = {
-    // busca as reviews de um usuário específico (GET)
-    getReviewsByUser: async (userId) => {
-  const response = await axios.get(`${API_URL}/user/${userId}`, getAuthHeaders());
-  return response.data;
-},
-
-
-    // BUSCAR todas as Reviews (GET)
-    getAllReviews: async () => {
-        try {
-        const response = await axios.get(API_URL, getAuthHeaders());
-        return response.data;
-    } catch (error) {
-        console.error("Erro ao buscar todas as reviews:", error);
-        throw error; // Lança o erro para o componente tratar
+  const token = localStorage.getItem('token')
+  return {
+    headers: {
+      Authorization: `Bearer ${token}`, // adiciona token JWT no cabeçalho
+      'Content-Type': 'application/json' // define o tipo de conteúdo como JSON
     }
-},
+  }
+}
 
+/**
+ * reviewService
+ * objeto que contém todas as chamadas REST relacionadas a Reviews.
+ */
+export const reviewService = {
+  /**
+   * Busca todas as reviews de um usuário específico
+   * Método GET -> /reviews/user/{userId}
+   */ getReviewsByUser: async userId => {
+    const response = await axios.get(
+      `${API_URL}/user/${userId}`,
+      getAuthHeaders()
+    )
+    return response.data
+  },
 
-    // CRIAR Review (POST)
-    // DTO: { gameId, nota, textReview, status }
-createReview: async ({ gameId, nota, textReview, status }) => {
-  return (await axios.post(API_URL, { gameId, nota, textReview, status }, getAuthHeaders())).data;
-},
+  /**
+   * Busca TODAS as reviews cadastradas no sistema
+   * Método GET -> /reviews
+   */ getAllReviews: async () => {
+    try {
+      const response = await axios.get(API_URL, getAuthHeaders())
+      return response.data
+    } catch (error) {
+      console.error('Erro ao buscar todas as reviews:', error)
+      throw error // Lança o erro para o componente tratar
+    }
+  },
 
-    // 3. ATUALIZAR Review (PUT)
-    // DTO: { nota, textReview, status }
-    updateReview: async (reviewId, reviewData) => {
-        const response = await axios.put(`${API_URL}/${reviewId}`, reviewData, getAuthHeaders());
-        return response.data;
-    },
+  /**
+   * Cria uma nova review
+   * Método POST - /reviews
+   * DTO esperado pelo backend:
+   * {
+   *    gameId,
+   *    nota,
+   *    textReview,
+   *    status
+   * }
+   */
+  createReview: async ({ gameId, nota, textReview, status }) => {
+    return (
+      await axios.post(
+        API_URL,
+        { gameId, nota, textReview, status },
+        getAuthHeaders()
+      )
+    ).data
+  },
 
-    // 4. DELETAR Review (DELETE)
-    deleteReview: async (reviewId) => {
-        await axios.delete(`${API_URL}/${reviewId}`, getAuthHeaders());
-    },
+  /**
+   * Atualiza uma review existente
+   * método PUT - /reviews/{id}
+   * DTO:
+   * {
+   *    nota,
+   *    textReview,
+   *    status
+   * }
+   */
+  updateReview: async (reviewId, reviewData) => {
+    const response = await axios.put(
+      `${API_URL}/${reviewId}`,
+      reviewData,
+      getAuthHeaders()
+    )
+    return response.data
+  },
 
-    // 5. CURTIR Review (PUT
-    likeReview: async (reviewId) => {
-  const response = await axios.put(`${API_URL}/${reviewId}/like`, {}, getAuthHeaders());
-  return response.data;
-},
+  /**
+   * Deleta uma review
+   * método DELETE - /reviews/{id}
+   */ deleteReview: async reviewId => {
+    await axios.delete(`${API_URL}/${reviewId}`, getAuthHeaders())
+  },
 
-// 6. DESCURTIR Review (PUT)
-dislikeReview: async (reviewId) => {
-  const response = await axios.put(`${API_URL}/${reviewId}/dislike`, {}, getAuthHeaders());
-  return response.data;
-    },
-};
+  /**
+   * CURTIR review
+   * método PUT - /reviews/{id}/like
+   * envia body vazio porque só incrementa contagem
+   */ likeReview: async reviewId => {
+    const response = await axios.put(
+      `${API_URL}/${reviewId}/like`,
+      {},
+      getAuthHeaders()
+    )
+    return response.data
+  },
+
+  /**
+   * DESCURTIR review
+   * método PUT - /reviews/{id}/dislike
+   * também envia body vazio
+   */ dislikeReview: async reviewId => {
+    const response = await axios.put(
+      `${API_URL}/${reviewId}/dislike`,
+      {},
+      getAuthHeaders()
+    )
+    return response.data
+  }
+}

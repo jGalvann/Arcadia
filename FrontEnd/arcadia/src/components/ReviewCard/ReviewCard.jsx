@@ -5,20 +5,43 @@ import { toast } from "react-toastify";
 import { getGameDetails, getGameName } from "../../services/rawgApi";
 import GameModal from "../ModalGame/ModalGame";
 
+/**
+ * ReviewCard
+ * exibe uma review feita por um usuário sobre um jogo.
+ * da para curtir, descurtir, editar, excluir e abrir modal do jogo.
+ *
+ * Props:
+ * - review: dados da review
+ * - currentUser: usuário logado (para permissões)
+ * - onRefresh: função para recarregar a lista depois das alterações
+ */
 export default function ReviewCard({ review, currentUser, onRefresh }) {
+  // estado para controlar se está editando a review
   const [isEditing, setIsEditing] = useState(false);
+
+  // estado para controlar se o modal do jogo está aberto
   const [isGameModalOpen, setIsGameModalOpen] = useState(false);
+
+  // estado para guardar informações do jogo
   const [gameInfo, setGameInfo] = useState(null);
 
   const [nota, setNota] = useState(review.nota);
   const [textReview, setTextReview] = useState(review.textReview);
   const [status, setStatus] = useState(review.status);
+
+  // estado para guardar o nome do jogo
   const [gameName, setGameName] = useState("Carregando...");
 
+  // verifica se o usuário pode editar (autor da review ou admin)
   const podeEditar =
     currentUser &&
     (currentUser.id === review.userId || currentUser.role === "ADMIN");
 
+  /**
+   * Carrega o nome do jogo:
+   * se já veio salvo na review, usa esse nome
+   * caso contrário, busca pela API RAWG usando o gameId
+   */
   useEffect(() => {
     async function loadName() {
       if (review.gameName) {
@@ -35,6 +58,7 @@ export default function ReviewCard({ review, currentUser, onRefresh }) {
     loadName();
   }, [review.gameId, review.gameName]);
 
+  // função para like da review
   async function handleLike(e) {
     e.stopPropagation();
     try {
@@ -45,6 +69,7 @@ export default function ReviewCard({ review, currentUser, onRefresh }) {
     }
   }
 
+  // função para deslike da review
   async function handleDislike(e) {
     e.stopPropagation();
     try {
@@ -55,6 +80,7 @@ export default function ReviewCard({ review, currentUser, onRefresh }) {
     }
   }
 
+  // função para excluir a review
   async function handleDelete(e) {
     e.stopPropagation();
     if (!window.confirm("Tem certeza que deseja excluir esta review?")) return;
@@ -67,6 +93,7 @@ export default function ReviewCard({ review, currentUser, onRefresh }) {
     }
   }
 
+  // função para salvar a edição da review
   async function salvarEdicao(e) {
     e.stopPropagation();
     try {
@@ -84,26 +111,30 @@ export default function ReviewCard({ review, currentUser, onRefresh }) {
     }
   }
 
-async function openGameModal() {
-  try {
-    const details = await getGameDetails(review.gameId); // busca o jogo completo no RAWG
+  /*
+   * ABRIR MODAL DO JOGO
+   * busca imagem e infos completas do RAWG
+   */  async function openGameModal() {
+    try {
+      const details = await getGameDetails(review.gameId); // busca o jogo completo no RAWG
 
-    setGameInfo({
-      id: review.gameId,
-      name: gameName,
-      background_image: details.background_image, // AQUI AGORA VEM A IMAGEM!
-    });
+      // guarda os dados necessários para o GameModal
+      setGameInfo({
+        id: review.gameId,
+        name: gameName,
+        background_image: details.background_image,
+      });
 
-    setIsGameModalOpen(true);
-  } catch (error) {
-    console.error("Erro ao carregar imagem do jogo:", error);
-    setIsGameModalOpen(true);
+      setIsGameModalOpen(true);
+    } catch (error) {
+      console.error("Erro ao carregar imagem do jogo:", error);
+      setIsGameModalOpen(true);
+    }
   }
-}
 
   return (
     <>
-      {/* CARD */}
+      {/* CARD DA REVIEW*/}
       <div className={styles.reviewCard} onClick={openGameModal}>
         <div className={styles.reviewHeader}>
           <span className={styles.gameName}>{gameName}</span>
@@ -112,8 +143,10 @@ async function openGameModal() {
 
         <p className={styles.reviewText}>{review.textReview}</p>
 
-        {/* LINHA INFERIOR */}
+        {/* PARTE INFERIOR DO CARD (AÇÕES E LIKES) */}
         <div className={styles.footerRow}>
+
+          {/* AÇÕES DE EDIÇÃO (somente se autorizado) */}
           {podeEditar && (
             <div className={styles.actions}>
               <button
@@ -132,6 +165,7 @@ async function openGameModal() {
             </div>
           )}
 
+          {/* LIKE / DISLIKE */}
           <div className={styles.likeContainer}>
             <button onClick={handleLike} className={styles.likeBtn}>
               👍 {review.countLike}
@@ -145,7 +179,10 @@ async function openGameModal() {
 
       {/* MODAL DE EDITAR REVIEW */}
       {isEditing && (
-        <div className={styles.modalOverlay} onClick={() => setIsEditing(false)}>
+        <div
+          className={styles.modalOverlay}
+          onClick={() => setIsEditing(false)}
+        >
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <h3>Editar Review</h3>
 

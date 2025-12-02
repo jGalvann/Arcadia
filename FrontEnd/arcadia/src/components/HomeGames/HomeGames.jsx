@@ -16,6 +16,7 @@ export default function HomeGames() {
     carregar();
   }, []); //roda só uma vez quando o componente abrir
 
+  // funções para os botões de scroll
   function left() {
     scrollRef.current.scrollBy({ left: -400, behavior: "smooth" });
   }
@@ -31,7 +32,7 @@ export default function HomeGames() {
       <div className={styles.jogos} ref={scrollRef}>
         {games.map((game) => (
           <div key={game.id}>
-            <GameCard game={game} />
+            <GameCard game={game} /> {/* componente do card do jogo, faz um map dele, então vai carregar vários jogos (da api do RAWG) */}
           </div>
         ))}
       </div>

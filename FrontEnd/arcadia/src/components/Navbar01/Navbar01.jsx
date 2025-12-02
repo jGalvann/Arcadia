@@ -9,6 +9,7 @@ import {
 function Navbar01() {
   return (
     <div className={styles.navbar01}>
+      {/* botões da navbar */}
       <BtnInicio />
       <BtnJogos />
       <BtnReviews />

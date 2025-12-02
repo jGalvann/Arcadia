@@ -8,10 +8,10 @@ export default function BtnReview({ gameId }) {
   return (
     <>
       <button onClick={() => setIsOpen(true)} className={styles.btnReview}>
-        Faça sua Review
-      </button>
+        Faça sua Review 
+      </button>{/* botão para abrir o modal para fazer review */}
 
-      <ModalReview
+      <ModalReview // componente do modal para fazer review
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         gameId={gameId}

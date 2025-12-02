@@ -6,42 +6,58 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Página de Registro (Cadastro de Usuário)
+ * permite que novos usuários criem uma conta no sistema
+ */
 export default function Register() {
+  // estados responsáveis por armazenar o input digitado pelo usuário
   const [username, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // hook para navegação
 
+  /**
+   * handleRegister
+   * executa quando o formulário é enviado. Realiza requisição ao backend
+   * para cadastro de um novo usuário.
+   */
   async function handleRegister(e) {
-    e.preventDefault();
+    e.preventDefault(); // impede que a página recarregue
 
     try {
+      // envia os dados preenchidos para o backend
       await api.post("/auth/register", {
         username,
         email,
         password,
       });
 
+      // se der certo, avisa o usuário e redireciona para login
       toast.success("Cadastro realizado com sucesso!");
       navigate("/login");
     } catch {
+      // em caso de erro, avisa o usuário
       toast.error("E-mail já cadastrado, ou inválido!");
       toast.warn("Tente novamente com outro e-mail.");
     }
   }
 
-  const s = styles;
+  const s = styles; // atalho para facilitar o uso das classes CSS
+
   return (
     <div>
       <nav className={s.navbar}>
         <Navbar01 />
       </nav>
+
       <div className={s.container}>
         <div className={s.containerdados}>
           <h1>Arcadia</h1>
           <p>Crie sua conta</p>
 
+          {/* formulário de cadastro */}
           <form onSubmit={handleRegister} className={s.campospreencher}>
             <input
               type="text"
